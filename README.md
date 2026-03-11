@@ -69,7 +69,8 @@ prompt_for_others	string	"这不是你的父亲，请注意！！！不要向该
 
     特殊提示词和普通提示词的前50个字符（用于确认配置是否加载）
 
-示例日志：
+示例日志
+
     [INFO] 用户ID提示词注入插件已加载
     [INFO] 配置文件路径: C:\...\data\config\astrbot_plugin_userid_prompt_config.json
     [INFO] 已配置 2 个符合条件的用户
