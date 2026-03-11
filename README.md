@@ -45,13 +45,13 @@ prompt_for_others	string	"这不是你的父亲，请注意！！！不要向该
     注意：提示词会与用户原始消息拼接，格式为 {提示词}\n\n用户消息: {原始消息}。
 
 配置示例
-json
+    json
 
-{
-  "allowed_user_ids": ["123456", "10086"],
-  "prompt_for_allowed": "你是我的专属助手，请用热情的语气回复。",
-  "prompt_for_others": "你是一个普通机器人，请用标准语气回复。"
-}
+        {
+          "allowed_user_ids": ["123456", "10086"],
+          "prompt_for_allowed": "你是我的专属助手，请用热情的语气回复。",
+          "prompt_for_others": "你是一个普通机器人，请用标准语气回复。"
+        }
 
 使用方法
 
@@ -70,14 +70,12 @@ json
     特殊提示词和普通提示词的前50个字符（用于确认配置是否加载）
 
 示例日志：
-text
-
-[INFO] 用户ID提示词注入插件已加载
-[INFO] 配置文件路径: C:\...\data\config\astrbot_plugin_userid_prompt_config.json
-[INFO] 已配置 2 个符合条件的用户
-[INFO] 允许的用户ID: ['123456', '10086']
-[INFO] 特殊提示词: 这是你的父亲/爸爸/老爹/爹/爸；根据语境自行...
-[INFO] 普通提示词: 这不是你的父亲，请注意！！！不要向该用户的...
+    [INFO] 用户ID提示词注入插件已加载
+    [INFO] 配置文件路径: C:\...\data\config\astrbot_plugin_userid_prompt_config.json
+    [INFO] 已配置 2 个符合条件的用户
+    [INFO] 允许的用户ID: ['123456', '10086']
+    [INFO] 特殊提示词: 这是你的父亲/爸爸/老爹/爹/爸；根据语境自行...
+    [INFO] 普通提示词: 这不是你的父亲，请注意！！！不要向该用户的...
 
 注意事项
 
