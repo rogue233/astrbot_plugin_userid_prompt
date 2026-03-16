@@ -1,0 +1,7 @@
+name: userid_prompt_injector
+display_name: 用户ID提示词注入插件
+desc: 根据用户ID是否符合条件，自动注入不同风格的提示词
+author: 你的名字
+version: 1.1.0
+repository: https://github.com/你的仓库/userid_prompt_injector
+astrbot_version: ">=4.16"
