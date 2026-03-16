@@ -9,7 +9,7 @@ from astrbot.api import logger
     "YourName", 
     "根据用户ID注入不同提示词的插件", 
     "1.0.2",
-    "https://github.com/YourName/astrbot_plugin_userid_prompt"  # 可选，你的仓库地址
+    "https://github.com/rogue233/astrbot_plugin_userid_prompt"  # 可选，你的仓库地址
 )
 class UserIdPromptInjector(Star):
     def __init__(self, context: Context, config: dict):
