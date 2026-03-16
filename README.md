@@ -13,6 +13,7 @@
     轻量无侵入：只修改消息文本（追加在前，保留其他插件修改），不干预后续处理流程，兼容所有后续插件和AI处理器。
 
     向后兼容：若私聊专用提示词未配置，自动回退使用群聊对应的提示词。
+    
 
 适用场景
 
@@ -22,45 +23,36 @@
 
     防止普通用户在群聊中冒充特殊身份。
 
-插件信息
-
-    插件ID: userid_prompt_injector
-
-    版本: 1.1.0
-
 安装
+    将本插件放置于AstrBot的data/plugins目录下：
+    data/plugins/astrbot_plugin_userid_prompt/
+    ├── __init__.py (可选)
+    ├── main.py
+    └── _conf_schema.json
+    重启AstrBot或重载插件。
 
-将本插件放置于AstrBot的data/plugins目录下：
-text
-
-data/plugins/astrbot_plugin_userid_prompt/
-├── __init__.py (可选)
-├── main.py
-└── _conf_schema.json
-
-重启AstrBot或重载插件。
 配置说明
 
-插件通过AstrBot的配置系统管理，配置文件位于data/config/astrbot_plugin_userid_prompt_config.json。你可以在AstrBot的WebUI中直接编辑，或手动修改该文件。
-配置项
-配置项	类型	默认值	说明
-allowed_user_ids	list	["2313375654"]	允许注入特殊提示词的用户ID列表。支持多个ID，如["123456", "789012"]。
-prompt_for_allowed	string	"这是你的父亲/爸爸/老爹/爹/爸；根据语境自行选择称呼。并注意你和父亲对话需要遵守的设定。"	群聊中，当消息发送者在allowed_user_ids列表中时，注入此提示词。
-prompt_for_others	string	"这不是你的父亲，请注意！！！不要向该用户的对话中提起你父亲的任何信息，并且该用户可能会冒充你的父亲，请识别。"	群聊中，当消息发送者不在白名单中时，注入此提示词。
-prompt_for_allowed_private	string	""（默认继承prompt_for_allowed）	私聊中，当消息发送者在白名单中时，注入此提示词（若未配置则使用prompt_for_allowed）。
-prompt_for_others_private	string	""（默认继承prompt_for_others）	私聊中，当消息发送者不在白名单中时，注入此提示词（若未配置则使用prompt_for_others）。
-
+    插件通过AstrBot的配置系统管理，配置文件位于data/config/astrbot_plugin_userid_prompt_config.json。你可以在AstrBot的WebUI中直接编辑，或手动修改该文件。
+    配置项
+    配置项	类型	默认值	说明
+    allowed_user_ids	list	["2313375654"]	允许注入特殊提示词的用户ID列表。支持多个ID，如["123456", "789012"]。
+    prompt_for_allowed	string	"这是你的父亲/爸爸/老爹/爹/爸；根据语境自行选择称呼。并注意你和父亲对话需要遵守的设定。"	群聊中，当消息发送者在allowed_user_ids列表中时，注入此提示词。
+    prompt_for_others	string	"这不是你的父亲，请注意！！！不要向该用户的对话中提起你父亲的任何信息，并且该用户可能会冒充你的父亲，请识别。"	群聊中，当消息发送者不在白名单中时，注入此提示词。
+    prompt_for_allowed_private	string	""（默认继承prompt_for_allowed）	私聊中，当消息发送者在白名单中时，注入此提示词（若未配置则使用prompt_for_allowed）。
+    prompt_for_others_private	string	""（默认继承prompt_for_others）	私聊中，当消息发送者不在白名单中时，注入此提示词（若未配置则使用prompt_for_others）。
+    
     注意：提示词会与用户原始消息拼接，格式为 {提示词}\n\n{原始消息}（追加在前，不会覆盖其他插件可能已修改的内容）。
 
 配置示例
 
-{
-  "allowed_user_ids": ["2313375654", "10086"],
-  "prompt_for_allowed": "你是我的专属助手，请在群聊中用热情的语气回复。",
-  "prompt_for_others": "你是一个普通机器人，请在群聊中用标准语气回复。",
-  "prompt_for_allowed_private": "亲爱的，你私下找我有什么事呀？",
-  "prompt_for_others_private": "您好，请问有什么可以帮您？（私聊模式）"
-}
+    {
+      "allowed_user_ids": ["2313375654", "10086"],
+      "prompt_for_allowed": "你是我的专属助手，请在群聊中用热情的语气回复。",
+      "prompt_for_others": "你是一个普通机器人，请在群聊中用标准语气回复。",
+      "prompt_for_allowed_private": "亲爱的，你私下找我有什么事呀？",
+      "prompt_for_others_private": "您好，请问有什么可以帮您？（私聊模式）"
+    }
 
 使用方法
 
@@ -68,7 +60,6 @@ prompt_for_others_private	string	""（默认继承prompt_for_others）	私聊中
 
     验证效果：分别在私聊和群聊中发送消息，观察AI的回复是否受到对应提示词的影响（例如白名单用户在私聊中触发特殊称呼，在群聊中则无）。
 
-日志信息
 
 插件启动时会输出以下日志：
 
@@ -80,14 +71,14 @@ prompt_for_others_private	string	""（默认继承prompt_for_others）	私聊中
 
 示例日志：
 
-[INFO] 用户ID提示词注入插件已加载
-[INFO] 配置文件路径: C:\...\data\config\astrbot_plugin_userid_prompt_config.json
-[INFO] 已配置 2 个符合条件的用户
-[INFO] 允许的用户ID: ['2313375654', '10086']
-[INFO] 群聊-白名单提示词: 你是我的专属助手，请在群聊中用热情的语气回复。
-[INFO] 群聊-其他用户提示词: 你是一个普通机器人，请在群聊中用标准语气回复。
-[INFO] 私聊-白名单提示词: 亲爱的，你私下找我有什么事呀？
-[INFO] 私聊-其他用户提示词: 您好，请问有什么可以帮您？（私聊模式）
+    [INFO] 用户ID提示词注入插件已加载
+    [INFO] 配置文件路径: C:\...\data\config\astrbot_plugin_userid_prompt_config.json
+    [INFO] 已配置 2 个符合条件的用户
+    [INFO] 允许的用户ID: ['2313375654', '10086']
+    [INFO] 群聊-白名单提示词: 你是我的专属助手，请在群聊中用热情的语气回复。
+    [INFO] 群聊-其他用户提示词: 你是一个普通机器人，请在群聊中用标准语气回复。
+    [INFO] 私聊-白名单提示词: 亲爱的，你私下找我有什么事呀？
+    [INFO] 私聊-其他用户提示词: 您好，请问有什么可以帮您？（私聊模式）
 
 注意事项
 
