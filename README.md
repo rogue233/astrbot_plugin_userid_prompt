@@ -24,6 +24,7 @@
     防止普通用户在群聊中冒充特殊身份。
 
 安装
+
     将本插件放置于AstrBot的data/plugins目录下：
     重启AstrBot或重载插件。
 
