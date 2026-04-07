@@ -25,10 +25,6 @@
 
 安装
     将本插件放置于AstrBot的data/plugins目录下：
-    data/plugins/astrbot_plugin_userid_prompt/
-    ├── __init__.py (可选)
-    ├── main.py
-    └── _conf_schema.json
     重启AstrBot或重载插件。
 
 配置说明
