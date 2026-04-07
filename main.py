@@ -5,11 +5,11 @@ from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 
 @register(
-    "userid_prompt_injector",
-    "YourName",
+    "astrbot_plugin_userid_prompt",
+    "rogue233",
     "根据用户ID和聊天类型注入不同提示词的插件",
     "1.1.0",
-    "https://github.com/YourName/astrbot_plugin_userid_prompt"
+    "https://github.com/rogue233/astrbot_plugin_userid_prompt"
 )
 class UserIdPromptInjector(Star):
     def __init__(self, context: Context, config: dict):
